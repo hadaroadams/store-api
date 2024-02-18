@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const app = express();
 const connectDB = require("./config/dbconn");
 const products = require("./route/products");
-const errorHandler = require("./middlewares/ErrorHandling");
+const errHandler = require("./middlewares/errHandler");
 const notFound = require("./middlewares/notFound");
 
 connectDB();
@@ -21,7 +21,7 @@ app.use("/api/product", products);
 
 // erro middleware
 
-app.use(errorHandler);
+app.use(errHandler);
 app.use(notFound);
 
 mongoose.connection.once("open", () => {
